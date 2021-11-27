@@ -12,7 +12,7 @@
 // 1 = Xiaomi Mi Scooter 1S (Not tested)
 // 2 = Xiaomi Mi Scooter Pro 2
 
-#define SCOOTERTYPE 0
+#define SCOOTERTYPE 2
 
 //===========================================================================
 //=============================Motion behavior  =============================
@@ -22,7 +22,7 @@
 int boosttimer_tier1 = 3000;
 int boosttimer_tier2 = 5000; 
 int boosttimer_tier3 = 7000; 
-int kickdelay = 1000; //time before you can do an new kick after boost timer is expired.
+int kickdelay = 500; //time before you can do an new kick after boost timer is expired.
 
 // Smooth readings of the speedometer. The higher the number, the more the readings 
 // will be smoothed, but the slower the step will respond to the kicks.
@@ -281,9 +281,7 @@ void AnalyseKick(){
     
     ThrottleWrite(233); //  100% throttle
     timer_m.in(boosttimer_tier3, release_throttle); //Set timer to release throttle
-   }
-  
-  
+   }  
 }
 
 
@@ -293,5 +291,4 @@ int ThrottleWrite(int value)
       analogWrite(THROTTLE_PIN, value);
 
   }
-
 }
